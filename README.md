@@ -43,4 +43,4 @@ python3 -m unittest test_parser test_protocol test_prompt_examples test_batch_dr
   test_arm_c test_monolithic test_sensitivity test_inference_setup
 ```
 
-Repositorio privado. Sin licencia: todos los derechos reservados.
+Licencia MIT (ver `LICENSE`). El repositorio no contiene datos de pacientes.
