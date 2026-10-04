@@ -1,0 +1,89 @@
+FORMATO OBLIGATORIO
+
+Devuelve exactamente los 48 campos indicados abajo. Para todo campo con
+`valor`, utiliza lógica ternaria:
+
+- `true`: existe evidencia explícita y suficiente de que el criterio se cumple.
+- `false`: existe evidencia explícita y suficiente de ausencia o negación.
+- `null`: no se menciona, es ambiguo o la evidencia no permite decidir.
+
+No conviertas automáticamente "no mencionado" en `false`.
+
+EVIDENCIA
+
+- Cuando `valor=true` o `valor=false`, copia en `evidencia` un tramo contiguo
+  exacto, carácter por carácter: misma capitalización, espacios, puntuación y
+  errores que en la epicrisis.
+- Cuando `valor=null`, usa `evidencia=null`, salvo que una cita ambigua sea útil
+  para auditoría.
+- No inventes, normalices, corrijas ni parafrasees evidencia.
+- Toda explicación pertenece fuera de `evidencia`; con `valor=null`,
+  `evidencia` debe ser `null` o una cita exacta.
+- Distingue antecedentes previos de eventos de la hospitalización actual.
+
+REGLA HFAV
+
+`hfav=true` exige mención explícita de HFAV/hemofiltración de alto volumen o
+parámetros que demuestren una dosis de alto volumen. HFVVC, hemofiltración
+venovenosa continua, TRRC, hemodiálisis, hemofiltración continua o aporte de
+albúmina NO demuestran por sí solos HFAV. Si sólo aparece HFVVC/TRRC sin dosis
+de alto volumen, usa `hfav=null`. Usa `hfav=false` únicamente ante negación
+explícita o evidencia suficiente de que no se realizó HFAV.
+
+CAMPOS A EXTRAER
+
+{
+  "hipertension_arterial":           {"valor": null, "evidencia": null},
+  "hipertension_pulmonar":           {"valor": null, "evidencia": null},
+  "enfermedad_pulmonar":             {"valor": null, "evidencia": null},
+  "diabetes_tipo2_complicada":       {"valor": null, "evidencia": null},
+  "diabetes_tipo2_no_complicada":    {"valor": null, "evidencia": null},
+  "enfermedad_renal_cronica":        {"valor": null, "evidencia": null},
+  "insuficiencia_cardiaca_clase_iv": {"valor": null, "evidencia": null},
+  "arritmias":                       {"valor": null, "evidencia": null},
+  "neoplasia_hematologica":          {"valor": null, "evidencia": null},
+  "cancer_metastasico":              {"valor": null, "evidencia": null},
+  "demencia":                        {"valor": null, "evidencia": null},
+  "abuso_sustancias":                {"valor": null, "evidencia": null},
+  "epoc":                            {"valor": null, "evidencia": null},
+  "accidente_cerebrovascular":       {"valor": null, "evidencia": null},
+  "postracion":                      {"valor": null, "evidencia": null},
+  "infecciones_previas":             {"valor": null, "evidencia": null},
+  "cirugias_previas":                {"valor": null, "evidencia": null},
+  "cirugias_previas_cantidad": null,
+  "farmacos_cronicos": null,
+  "mortalidad": {"valor": null, "evidencia": null},
+  "hfav":       {"valor": null, "evidencia": null},
+  "vmi": {
+    "valor": null, "evidencia": null, "motivo": null, "urgente": null,
+    "prono": null, "inicio": null, "fin": null
+  },
+  "reanimacion": {"maniobras": null, "ciclos_paro": null, "cantidad_paros": null},
+  "transfusion": {"valor": null, "evidencia": null, "unidades": null},
+  "drogas_vasoactivas": {"valor": null, "evidencia": null, "multiples": null},
+  "cirugias_hospitalizacion": {"cantidad": null, "descripcion": null},
+  "trr": {"valor": null, "evidencia": null, "tipo": null},
+  "infeccion_urinario":         {"valor": null, "evidencia": null, "germen": null},
+  "infeccion_respiratorio":     {"valor": null, "evidencia": null, "germen": null},
+  "infeccion_vascular":         {"valor": null, "evidencia": null, "germen": null},
+  "infeccion_sangre":           {"valor": null, "evidencia": null, "germen": null},
+  "infeccion_cerebral":         {"valor": null, "evidencia": null, "germen": null},
+  "infeccion_cardiaco":         {"valor": null, "evidencia": null, "germen": null},
+  "infeccion_quirurgico":       {"valor": null, "evidencia": null, "germen": null},
+  "infeccion_gastrointestinal": {"valor": null, "evidencia": null, "germen": null},
+  "infeccion_piel_tejidos":     {"valor": null, "evidencia": null, "germen": null},
+  "infeccion_osea":             {"valor": null, "evidencia": null, "germen": null},
+  "infeccion_general":          {"valor": null, "evidencia": null, "germen": null},
+  "falla_renal":    {"valor": null, "evidencia": null},
+  "falla_nervioso": {"valor": null, "evidencia": null},
+  "falla_vascular": {"valor": null, "evidencia": null},
+  "falla_cardiaco": {"valor": null, "evidencia": null},
+  "falla_pulmonar": {"valor": null, "evidencia": null},
+  "falla_hepatico": {"valor": null, "evidencia": null},
+  "falla_otra": {"valor": null, "evidencia": null, "descripcion": null},
+  "diagnostico_ingreso": null,
+  "diagnostico_egreso": null,
+  "farmacos_hospitalizacion": null
+}
+
+Responde SOLO con el objeto JSON válido completo, sin texto adicional.

@@ -1,0 +1,34 @@
+{
+  "$comment": "Arm C case model, form199-v1.3 pilot draft. Enforced by arm_c.validate_case_model; to be reviewed with a clinician before the evaluation run.",
+  "type": "object",
+  "required": ["episodio", "linea_de_tiempo", "problemas", "soportes", "infecciones",
+               "desenlace_primera_uci", "calidad_documental", "dudas"],
+  "additionalProperties": false,
+  "enums": {
+    "momento": ["antes_uci", "durante_primera_uci", "despues_primera_uci", "sin_uci"],
+    "tipo": ["ingreso", "traslado", "procedimiento", "soporte", "infeccion", "complicacion",
+             "falla_organica", "egreso", "otro"],
+    "certeza": ["afirmado", "negado", "sospecha_descartada", "sospecha_no_resuelta"],
+    "estado": ["antecedente_cronico", "agudo_del_episodio"],
+    "estado_vital": ["Vivo", "Fallecido", null],
+    "sepsis": [true, false, "unknown"]
+  },
+  "properties": {
+    "episodio": {"keys": ["hubo_estadia_uci", "estadias_uci", "primera_estadia"],
+                 "estadias_uci_item": ["orden", "ingreso", "egreso", "origen", "destino", "evidence_ids"]},
+    "linea_de_tiempo_item": ["momento", "dia_relativo", "evento", "tipo", "certeza", "evidence_ids"],
+    "problemas_item": ["problema", "estado", "certeza", "evidence_ids"],
+    "soportes_item": ["soporte", "realizado", "inicio", "fin", "evidence_ids"],
+    "infecciones_item": ["diagnostico", "sepsis", "foco", "germen", "tratamiento", "evidence_ids"],
+    "desenlace_primera_uci": ["estado_vital", "destino", "evidence_ids"],
+    "calidad_documental": ["secciones_vacias", "abreviaturas", "contradicciones", "no_documentado"],
+    "dudas_item": ["tema", "por_que", "evidence_ids"]
+  },
+  "rules": [
+    "every list item carries at least one evidence ID that exists in the note",
+    "dates are valid DD/MM/AAAA or null",
+    "hubo_estadia_uci false implies estadias_uci empty, primera_estadia null and no ICU outcome",
+    "hubo_estadia_uci true implies at least one ICU stay and primera_estadia equal to one of their orden values",
+    "a non-null ICU outcome requires evidence"
+  ]
+}

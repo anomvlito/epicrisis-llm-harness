@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.env
+*.env
+results/
+traces/
+checkpoints/
+case_models/
+slurm-*.out
+slurm-*.err

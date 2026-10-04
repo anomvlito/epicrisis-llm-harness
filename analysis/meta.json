@@ -1,0 +1,14 @@
+{
+ "n_campos_filtro_original": 109,
+ "n_campos": 90,
+ "tramos": {
+  "kappa<0.6": 33,
+  "kappa>=0.8": 29,
+  "0.6<=kappa<0.8": 28
+ },
+ "n_pacientes_con_referencia": 44,
+ "bootstrap": {
+  "n": 2000,
+  "semilla": 20260930
+ }
+}

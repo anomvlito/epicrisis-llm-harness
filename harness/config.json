@@ -1,0 +1,8 @@
+{
+  "version": "form199-v1.9",
+  "input_dir": "/path/to/workspace/datasets/concordancia-50-20260924/input",
+  "output_dir": "/path/to/workspace/experiments/concordancia50-form199-v1.9",
+  "models": ["Gemma4", "Llama-70B", "Qwen"],
+  "generation": {"max_new_tokens": 4096, "max_retries": 2, "prefill_chunk_size": 1024, "case_model_max_new_tokens": 8192},
+  "reference": "Excluded from model inputs; compare submitted human annotations separately"
+}

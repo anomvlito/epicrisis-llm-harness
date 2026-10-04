@@ -1,0 +1,122 @@
+FORMATO DE RESPUESTA OBLIGATORIO — cada campo debe tener exactamente la estructura mostrada en "CAMPOS A EXTRAER". Existen 3 tipos de campo:
+
+1) Campo booleano simple:
+{
+  "nombre_campo": {"valor": true|false, "evidencia": "cita textual o null"}
+}
+
+2) Campo booleano con datos adicionales — mismo criterio para "valor"/"evidencia",
+   más las claves adicionales solicitadas (usa null si el dato no aparece):
+{
+  "nombre_campo": {"valor": true|false, "evidencia": "cita o null", "<clave_extra>": ...}
+}
+
+3) Campo de dato simple (texto, número u objeto sin booleano "valor"):
+{
+  "nombre_campo": "texto" | numero | {"<clave>": ...} | null
+}
+
+DEFINICIÓN DE VALORES:
+- "valor": true  → condición/procedimiento/infección/falla PRESENTE y confirmado en el texto
+- "valor": false → condición/procedimiento/infección/falla AUSENTE (negado explícitamente) O NO MENCIONADO en el texto
+- "evidencia": cita textual exacta del fragmento relevante cuando valor es true | null cuando valor es false
+- Claves adicionales y campos de dato simple: el valor extraído tal como aparece en el texto, o null si no se menciona
+
+EJEMPLO:
+{
+  "hipertension_arterial": {"valor": true,  "evidencia": "HTA en tratamiento con enalapril 10mg"},
+  "epoc":                  {"valor": false, "evidencia": null},
+  "infecciones_previas":   {"valor": true,  "evidencia": "antecedente de ITU a repetición"},
+  "cirugias_previas":          {"valor": true, "evidencia": "antecedente de colecistectomía (2019) y apendicectomía (2015)"},
+  "cirugias_previas_cantidad": 2,
+  "farmacos_cronicos":         "Enalapril 10mg, Metformina 850mg, Atorvastatina 20mg",
+  "mortalidad":                {"valor": true, "evidencia": "paciente fallece el 14/03 por shock séptico refractario"},
+  "hfav":                      {"valor": false, "evidencia": null},
+  "vmi": {
+    "valor": true, "evidencia": "se inicia VMI por insuficiencia respiratoria aguda",
+    "motivo": "insuficiencia respiratoria aguda", "urgente": true, "prono": false,
+    "inicio": "2024-03-10", "fin": "2024-03-15"
+  },
+  "reanimacion": {"maniobras": null, "ciclos_paro": null, "cantidad_paros": null},
+  "transfusion": {"valor": true, "evidencia": "se transfunden 2 unidades de GR", "unidades": 2},
+  "drogas_vasoactivas": {"valor": true, "evidencia": "requiere noradrenalina y vasopresina", "multiples": true},
+  "cirugias_hospitalizacion": {"cantidad": 1, "descripcion": "traqueostomía"},
+  "trr": {"valor": true, "evidencia": "se inicia hemodiálisis por AKI", "tipo": "hemodialisis_intermitente"},
+  "infeccion_urinario": {"valor": true, "evidencia": "ITU por E. coli BLEE confirmada en urocultivo", "germen": "E. coli BLEE"},
+  "infeccion_respiratorio": {"valor": false, "evidencia": null, "germen": null},
+  "falla_renal": {"valor": true, "evidencia": "AKI KDIGO 3 que requiere TRR"},
+  "falla_otra": {"valor": false, "evidencia": null, "descripcion": null},
+  "diagnostico_ingreso": "Shock séptico de foco urinario",
+  "diagnostico_egreso": "Shock séptico resuelto, ERC etapa 4",
+  "farmacos_hospitalizacion": "Ceftriaxona 2g/24h, Noradrenalina, Furosemida 40mg/12h"
+}
+
+CAMPOS A EXTRAER:
+{
+  "hipertension_arterial":           {"valor": false, "evidencia": null},
+  "hipertension_pulmonar":           {"valor": false, "evidencia": null},
+  "enfermedad_pulmonar":             {"valor": false, "evidencia": null},
+  "diabetes_tipo2_complicada":       {"valor": false, "evidencia": null},
+  "diabetes_tipo2_no_complicada":    {"valor": false, "evidencia": null},
+  "enfermedad_renal_cronica":        {"valor": false, "evidencia": null},
+  "insuficiencia_cardiaca_clase_iv": {"valor": false, "evidencia": null},
+  "arritmias":                       {"valor": false, "evidencia": null},
+  "neoplasia_hematologica":          {"valor": false, "evidencia": null},
+  "cancer_metastasico":              {"valor": false, "evidencia": null},
+  "demencia":                        {"valor": false, "evidencia": null},
+  "abuso_sustancias":                {"valor": false, "evidencia": null},
+  "epoc":                            {"valor": false, "evidencia": null},
+  "accidente_cerebrovascular":       {"valor": false, "evidencia": null},
+  "postracion":                      {"valor": false, "evidencia": null},
+  "infecciones_previas":             {"valor": false, "evidencia": null},
+
+  "cirugias_previas":          {"valor": false, "evidencia": null},
+  "cirugias_previas_cantidad": null,
+  "farmacos_cronicos":         null,
+
+  "mortalidad":                {"valor": false, "evidencia": null},
+
+  "hfav":                      {"valor": false, "evidencia": null},
+
+  "vmi": {
+    "valor": false, "evidencia": null,
+    "motivo": null, "urgente": null, "prono": null,
+    "inicio": null, "fin": null
+  },
+
+  "reanimacion": {"maniobras": null, "ciclos_paro": null, "cantidad_paros": null},
+
+  "transfusion": {"valor": false, "evidencia": null, "unidades": null},
+
+  "drogas_vasoactivas": {"valor": false, "evidencia": null, "multiples": null},
+
+  "cirugias_hospitalizacion": {"cantidad": null, "descripcion": null},
+
+  "trr": {"valor": false, "evidencia": null, "tipo": null},
+
+  "infeccion_urinario":         {"valor": false, "evidencia": null, "germen": null},
+  "infeccion_respiratorio":     {"valor": false, "evidencia": null, "germen": null},
+  "infeccion_vascular":         {"valor": false, "evidencia": null, "germen": null},
+  "infeccion_sangre":           {"valor": false, "evidencia": null, "germen": null},
+  "infeccion_cerebral":         {"valor": false, "evidencia": null, "germen": null},
+  "infeccion_cardiaco":         {"valor": false, "evidencia": null, "germen": null},
+  "infeccion_quirurgico":       {"valor": false, "evidencia": null, "germen": null},
+  "infeccion_gastrointestinal": {"valor": false, "evidencia": null, "germen": null},
+  "infeccion_piel_tejidos":     {"valor": false, "evidencia": null, "germen": null},
+  "infeccion_osea":             {"valor": false, "evidencia": null, "germen": null},
+  "infeccion_general":          {"valor": false, "evidencia": null, "germen": null},
+
+  "falla_renal":    {"valor": false, "evidencia": null},
+  "falla_nervioso": {"valor": false, "evidencia": null},
+  "falla_vascular": {"valor": false, "evidencia": null},
+  "falla_cardiaco": {"valor": false, "evidencia": null},
+  "falla_pulmonar": {"valor": false, "evidencia": null},
+  "falla_hepatico": {"valor": false, "evidencia": null},
+  "falla_otra":     {"valor": false, "evidencia": null, "descripcion": null},
+
+  "diagnostico_ingreso":      null,
+  "diagnostico_egreso":       null,
+  "farmacos_hospitalizacion": null
+}
+
+INSTRUCCIÓN FINAL: Responde SOLO con el JSON válido completo. Sin texto antes ni después.

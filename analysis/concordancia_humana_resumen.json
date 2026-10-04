@@ -1,0 +1,67 @@
+{
+ "corte": "2026-09-29",
+ "epicrisis_2_o_mas_anotadores": 44,
+ "epicrisis_3_anotadores": 12,
+ "epicrisis_1_anotador": 4,
+ "entregas": 104,
+ "campos_activos": 171,
+ "campos_siempre_falsos_excluidos": 35,
+ "kappa_fleiss_media": 0.654,
+ "kappa_fleiss_mediana": 0.749,
+ "ac1_media": 0.905,
+ "n_kappa_ge_0_8": 71,
+ "n_kappa_0_6_a_0_8": 42,
+ "n_kappa_lt_0_6": 58,
+ "n_kappa_lt_0_4": 29,
+ "n_kappa_lt_0_4_con_ac1_ge_0_8": 24,
+ "por_bloque": [
+  {
+   "Nivel_1": "antecedentes",
+   "n": 65,
+   "kappa": 0.768,
+   "ac1": 0.948
+  },
+  {
+   "Nivel_1": "calidad",
+   "n": 1,
+   "kappa": 0.034,
+   "ac1": 0.117
+  },
+  {
+   "Nivel_1": "complicaciones",
+   "n": 8,
+   "kappa": 0.69,
+   "ac1": 0.905
+  },
+  {
+   "Nivel_1": "egreso",
+   "n": 4,
+   "kappa": 0.82,
+   "ac1": 0.894
+  },
+  {
+   "Nivel_1": "falla",
+   "n": 10,
+   "kappa": 0.535,
+   "ac1": 0.857
+  },
+  {
+   "Nivel_1": "infecciones",
+   "n": 35,
+   "kappa": 0.505,
+   "ac1": 0.908
+  },
+  {
+   "Nivel_1": "ingreso",
+   "n": 4,
+   "kappa": 0.562,
+   "ac1": 0.664
+  },
+  {
+   "Nivel_1": "soporte",
+   "n": 44,
+   "kappa": 0.63,
+   "ac1": 0.892
+  }
+ ]
+}
